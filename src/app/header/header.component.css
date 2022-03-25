@@ -1,0 +1,28 @@
+header{
+  background-color: var(--primary-color);
+  padding: 10px;
+}
+
+nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 60rem;
+  margin: auto;
+}
+
+nav div{
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.logo{
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+a{
+  text-decoration: none;
+  color: var(--link-color);
+}
