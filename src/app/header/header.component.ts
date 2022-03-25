@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  lang: any;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.lang = localStorage.getItem('lang') || 'es-ES';
+  }
+
+  changeLanguage(event: any): void {
+    const lang: string = event.target.value;
+    localStorage.setItem('lang', lang);
+    window.location.reload();
+    console.log(event.target.value);
   }
 
 }
