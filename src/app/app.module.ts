@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { PostsComponent } from './posts/posts.component';
+import { PostsService } from './service/posts.service'
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { PostsComponent } from './posts/posts.component';
     }),
   ],
   providers: [
-    HttpClient
+    HttpClient,
+    PostsService
   ],
   bootstrap: [AppComponent]
 })
