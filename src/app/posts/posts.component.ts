@@ -38,14 +38,17 @@ export class PostsComponent implements OnInit {
   }
 
   listPosts(){
-    this.postsService.listPosts(this.selectedDate, this.selectedCamera).subscribe({
-      next: r => {
-        /* console.log(r.near_earth_objects["2015-09-08"])
-        this.posts = r.near_earth_objects["2015-09-08"]; */
-        console.log(r.photos);
-        this.posts = r.photos;
-      },
-      error: e => console.log(JSON.stringify(e))
-    })
+    const promise = new Promise<void>((resolve, reject) => {
+      this.postsService.listPosts(this.selectedDate, this.selectedCamera).subscribe({
+        next: r => {
+          this.posts = r.photos;
+          resolve();
+        },
+        error: e => {
+          reject(e);
+        }
+      });
+    });
+    return promise;
   }
 }

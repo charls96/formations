@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs'
 
 @Injectable({
@@ -18,9 +18,6 @@ export class PostsService {
 
     camera === undefined || camera === " " ? requestCamera = "" : requestCamera = "camera=" + camera + "&";
     date === undefined ? requestDate = "earth_date=" + this.getDate() + "&" : requestDate = "earth_date=" + date + "&";
-
-    console.log(requestDate);
-    console.log(requestCamera);
 
     return this.httpClient.get("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?" + requestDate + requestCamera + "api_key=cjKXnMZUlNBBkc7BrodnOzHfC3Z4tca4WXQzosEu");
   }

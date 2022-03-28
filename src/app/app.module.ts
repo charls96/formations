@@ -9,12 +9,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { PostsComponent } from './posts/posts.component';
-import { PostsService } from './service/posts.service'
+import { PostsService } from './service/posts.service';
+import { UserBannerComponent } from './user-banner/user-banner.component'
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    PostsComponent
+    PostsComponent,
+    UserBannerComponent
   ],
   imports: [
     BrowserModule,
