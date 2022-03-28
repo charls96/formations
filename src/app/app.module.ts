@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { PostsService } from './service/posts.service'
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgxPaginationModule,
     HttpClientModule,
     TranslateModule.forRoot({
       defaultLanguage: 'es-ES',

@@ -1,15 +1,30 @@
 <main>
-    <h1>Mars Rover Photos</h1>
+  <h1>{{'title-posts' | translate}}</h1>
+  <div class="filters">
+    <input type="date" class="date" formControlName="date">
+    <select class="rover-camera" name="camera" (change)="selectCamera($event)">
+      <option value="">Cameras</option>
+      <option *ngFor="let camera of cameras" value="{{ camera }}" [selected]="selectedCamera == camera">{{ camera }}
+      </option>
+    </select>
+  </div>
+  <div *ngIf="posts.length; else elseBlock" class="data">
     <div class="posts">
-        <div *ngFor="let post of posts">
-          <div class="content">
-            <img src="{{ post.img_src }}" alt="" />
-            <div class="text-content">
-              <h4 class="date"><span>Date </span>{{ post.earth_date }}</h4>
-              <p><span>Camera </span>{{ post.camera.name }}</p>
-              <a href="https://mars.nasa.gov/">Más información</a>
-            </div>
+      <div *ngFor="let post of posts | paginate: { itemsPerPage: 9, currentPage: p }">
+        <div class="content">
+          <img src="{{ post.img_src }}" alt="" />
+          <div class="text-content">
+            <h4 class="date"><span>Date </span>{{ post.earth_date }}</h4>
+            <p><span>Camera </span>{{ post.camera.name }}</p>
+            <a target="_blank" href="https://mars.nasa.gov/">Más información</a>
           </div>
         </div>
+      </div>
     </div>
+    <pagination-controls [previousLabel]="labels.previousLabel" [nextLabel]="labels.nextLabel"
+      (pageChange)="p = $event">
+    </pagination-controls>
+  </div>
+  <ng-template #elseBlock>No se han encontrado resultados</ng-template>
+
 </main>
