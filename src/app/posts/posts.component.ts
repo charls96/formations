@@ -11,6 +11,7 @@ export class PostsComponent implements OnInit {
   posts: any = [];
   cameras: (string)[] = ['FHAZ', 'RHAZ', 'MAST', 'CHEMCAM', 'MAHLI', 'MARDI', 'NAVCAM', 'PANCAM', 'MINITES'];
   selectedCamera: string|any;
+  selectedDate: string|any;
 
   public labels: any = {
     previousLabel: '',
@@ -18,7 +19,7 @@ export class PostsComponent implements OnInit {
   }
 
   constructor(private postsService:PostsService) {
-    this.listPosts('');
+    this.listPosts();
   }
 
   ngOnInit(): void {
@@ -26,11 +27,18 @@ export class PostsComponent implements OnInit {
 
   selectCamera(event: any) {
     const camera = event.target.value;
-    this.listPosts(camera);
+    this.selectedCamera = camera;
+    this.listPosts();
   }
 
-  listPosts(camera: string){
-    this.postsService.listPosts(camera).subscribe({
+  selectDate(event:any) {
+    const date = event.target.value;
+    this.selectedDate = date;
+    this.listPosts();
+  }
+
+  listPosts(){
+    this.postsService.listPosts(this.selectedDate, this.selectedCamera).subscribe({
       next: r => {
         /* console.log(r.near_earth_objects["2015-09-08"])
         this.posts = r.near_earth_objects["2015-09-08"]; */

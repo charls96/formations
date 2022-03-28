@@ -1,9 +1,9 @@
 <main>
   <h1>{{'title-posts' | translate}}</h1>
   <div class="filters">
-    <input type="date" class="date" formControlName="date">
+    <input type="date" class="date" (change)="selectDate($event)">
     <select class="rover-camera" name="camera" (change)="selectCamera($event)">
-      <option value="">Cameras</option>
+      <option value=" ">Cameras</option>
       <option *ngFor="let camera of cameras" value="{{ camera }}" [selected]="selectedCamera == camera">{{ camera }}
       </option>
     </select>
